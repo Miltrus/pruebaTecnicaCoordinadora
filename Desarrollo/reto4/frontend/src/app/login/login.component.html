@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2>Inicio de Sesión</h2>
+      </div>
+      <div class="card-body">
+        <form (submit)="login()">
+          <div class="form-group">
+            <label for="correoUsuario">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correoUsuario" [(ngModel)]="correoUsuario" name="correoUsuario"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="contrasenaUsuario">Contraseña</label>
+            <input type="password" class="form-control" id="contrasenaUsuario" [(ngModel)]="contrasenaUsuario"
+              name="contrasenaUsuario" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+          <br><br>
+          <a routerLink="/register">Registrarse</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

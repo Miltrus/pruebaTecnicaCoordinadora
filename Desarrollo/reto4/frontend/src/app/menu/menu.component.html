@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú de Juegos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body class="container mt-4 text-center">
+  <div class="menu">
+    <h2>Menú de Juegos</h2>
+    <ul class="list-group">
+      <li class="list-group-item"><a class="btn btn-info" routerLink="/piedrapapeltijera">Piedra, Papel o Tijera</a>
+      </li>
+      <li class="list-group-item"><a class="btn btn-info" routerLink="/ahorcado">Ahorcado</a></li>
+    </ul>
+  </div>
+
+  <button class="btn btn-danger mt-4" (click)="logout()" routerLink="/login">Cerrar sesión</button>
+</body>
+
+</html>

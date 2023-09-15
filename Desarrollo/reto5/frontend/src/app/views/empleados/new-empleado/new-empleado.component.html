@@ -1,0 +1,108 @@
+<app-menu>
+  <div class="container">
+    <br>
+    <h2>Crear empleado</h2>
+    <br>
+    <div class="container">
+      <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Documento <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="documentoEmpleado" [ngClass]="{
+                'is-invalid': newForm.get('documentoEmpleado')?.invalid && (newForm.get('documentoEmpleado')?.touched || newForm.get('documentoEmpleado')?.dirty),
+                'is-valid': newForm.get('documentoEmpleado')?.valid && (newForm.get('documentoEmpleado')?.touched || newForm.get('documentoEmpleado')?.dirty)
+              }">
+              <div *ngIf="newForm.get('documentoEmpleado')?.errors?.['pattern']" class="invalid-feedback">
+                Documento inválido, mínimo 7 y máximo 10 dígitos numéricos.
+              </div>
+              <div *ngIf="newForm.get('documentoEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Nombre <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="nameEmpleado" [ngClass]="{
+                'is-invalid': newForm.get('nameEmpleado')?.invalid && (newForm.get('nameEmpleado')?.touched || newForm.get('nameEmpleado')?.dirty),
+                'is-valid': newForm.get('nameEmpleado')?.valid && (newForm.get('nameEmpleado')?.touched || newForm.get('nameEmpleado')?.dirty)
+              }">
+
+              <div *ngIf="newForm.get('nameEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Apellido <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="apellidoEmpleado" [ngClass]="{
+                'is-invalid': newForm.get('apellidoEmpleado')?.invalid && (newForm.get('apellidoEmpleado')?.touched || newForm.get('apellidoEmpleado')?.dirty),
+                'is-valid': newForm.get('apellidoEmpleado')?.valid && (newForm.get('apellidoEmpleado')?.touched || newForm.get('apellidoEmpleado')?.dirty)
+              }">
+
+              <div *ngIf="newForm.get('apellidoEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Teléfono <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="telEmpleado" [ngClass]="{
+                'is-invalid': newForm.get('telEmpleado')?.invalid && (newForm.get('telEmpleado')?.touched || newForm.get('telEmpleado')?.dirty),
+                'is-valid': newForm.get('telEmpleado')?.valid && (newForm.get('telEmpleado')?.touched || newForm.get('telEmpleado')?.dirty)
+              }">
+              <div *ngIf="newForm.get('telEmpleado')?.errors?.['pattern']" class="invalid-feedback">
+                Teléfono inválido, debe contener 10 dígitos numéricos.
+              </div>
+              <div *ngIf="newForm.get('telEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Email <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="emailEmpleado" [ngClass]="{
+                'is-invalid': newForm.get('emailEmpleado')?.invalid && (newForm.get('emailEmpleado')?.touched || newForm.get('emailEmpleado')?.dirty),
+                'is-valid': newForm.get('emailEmpleado')?.valid && (newForm.get('emailEmpleado')?.touched || newForm.get('emailEmpleado')?.dirty)
+              }">
+              <div *ngIf="newForm.get('emailEmpleado')?.errors?.['pattern']" class="invalid-feedback">
+                Correo inválido.
+              </div>
+              <div *ngIf="newForm.get('emailEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Cargo <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="cargoEmpleado" [ngClass]="{
+                'is-invalid': newForm.get('cargoEmpleado')?.invalid && (newForm.get('cargoEmpleado')?.touched || newForm.get('cargoEmpleado')?.dirty),
+                'is-valid': newForm.get('cargoEmpleado')?.valid && (newForm.get('cargoEmpleado')?.touched || newForm.get('cargoEmpleado')?.dirty)
+              }">
+              <div *ngIf="newForm.get('cargoEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <button type="button" mat-raised-button color="accent" (click)="goBack()">Atrás</button> |
+        <button type="submit" mat-raised-button color="primary" [disabled]="newForm.invalid">Guardar</button>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</app-menu>

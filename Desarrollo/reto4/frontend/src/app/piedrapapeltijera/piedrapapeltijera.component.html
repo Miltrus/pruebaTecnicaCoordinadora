@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piedra, Papel o Tijera</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body class="container mt-4 text-center">
+  <h2>Piedra, Papel o Tijera</h2>
+
+  <div class="row mt-4">
+    <div class="col">
+      <div *ngFor="let opcion of opciones" class="mb-2">
+        <button class="btn btn-primary" (click)="jugar(opcion)">{{ opcion }}</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="eleccionUser && eleccionPc" class="mt-4">
+    <div class="row">
+      <div class="col">
+        <p>Tu elección: {{ eleccionUser }}</p>
+      </div>
+      <div class="col">
+        <p>Elección de la pc: {{ eleccionPc }}</p>
+      </div>
+    </div>
+    <p>Resultado: {{ resultado }}</p>
+    <p>Empates: {{ contEmpate }}</p>
+    <p>Victorias: {{ contWin }}</p>
+    <p>Derrotas: {{ contLose }}</p>
+
+    <button class="btn btn-danger" (click)="endGame()">Finalizar juego</button>
+  </div>
+
+  <div *ngIf="juegoFin" class="mt-4">
+    <h2>Top jugadores</h2>
+    <ul class="list-group">
+      <li *ngFor="let jugador of players" class="list-group-item">{{ jugador.nombre }} - Puntaje: {{ jugador.puntaje }}
+      </li>
+    </ul>
+  </div>
+
+  <button routerLink="/menu" class="btn btn-info mt-4">Volver al menú</button>
+</body>
+
+</html>

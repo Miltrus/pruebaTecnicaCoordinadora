@@ -1,0 +1,68 @@
+<app-menu>
+  <div class="container">
+    <br>
+    <h2>Crear Puntaje</h2>
+    <br>
+    <div class="container">
+      <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="idEmpleado">Empleado <b style="color: red;">*</b></label>
+              <mat-select class="form-control" formControlName="idEmpleado" placeholder="---SELECCIONE---" [ngClass]="{
+                  'is-invalid': newForm.get('idEmpleado')?.invalid && (newForm.get('idEmpleado')?.touched || newForm.get('idEmpleado')?.dirty),
+                  'is-valid': newForm.get('idEmpleado')?.valid && (newForm.get('idEmpleado')?.touched || newForm.get('idEmpleado')?.dirty)
+                }">
+                <mat-option *ngFor="let empleado of empleados" [value]="empleado.idEmpleado">
+                  {{ empleado.nameEmpleado }}
+                </mat-option>
+              </mat-select>
+              <div *ngIf="newForm.get('idEmpleado')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label for="idPremio">Premio <b style="color: red;">*</b></label>
+              <mat-select class="form-control" formControlName="idPremio" placeholder="---SELECCIONE---" [ngClass]="{
+                  'is-invalid': newForm.get('idPremio')?.invalid && (newForm.get('idPremio')?.touched || newForm.get('idPremio')?.dirty),
+                  'is-valid': newForm.get('idPremio')?.valid && (newForm.get('idPremio')?.touched || newForm.get('idPremio')?.dirty)
+                }">
+                <mat-option *ngFor="let premio of premios" [value]="premio.idPremio">
+                  {{ premio.codigoPremio }}
+                </mat-option>
+              </mat-select>
+              <div *ngIf="newForm.get('idPremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Puntos <b style="color: red;">*</b></label>
+            <input type="text" class="form-control" formControlName="puntos" [ngClass]="{
+              'is-invalid': newForm.get('puntos')?.invalid && (newForm.get('puntos')?.touched || newForm.get('puntos')?.dirty),
+              'is-valid': newForm.get('puntos')?.valid && (newForm.get('puntos')?.touched || newForm.get('puntos')?.dirty)
+            }">
+            <div *ngIf="newForm.get('puntos')?.errors?.['pattern']" class="invalid-feedback">
+              Solo se permiten números.
+            </div>
+            <div *ngIf="newForm.get('puntos')?.errors?.['required']" class="invalid-feedback">
+              Este campo es obligatorio.
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <button type="button" mat-raised-button color="accent" (click)="goBack()">Atrás</button> |
+        <button type="submit" mat-raised-button color="primary" [disabled]="newForm.invalid">Guardar</button>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</app-menu>

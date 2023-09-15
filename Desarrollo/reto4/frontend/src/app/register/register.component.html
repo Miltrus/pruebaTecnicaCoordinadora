@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2>Registro de Usuario</h2>
+      </div>
+      <div class="card-body">
+        <form (submit)="registerUser()">
+          <div class="form-group">
+            <label for="nombreUsuario">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="nombreUsuario" [(ngModel)]="nombreUsuario" name="nombreUsuario"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="correoUsuario">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correoUsuario" [(ngModel)]="correoUsuario" name="correoUsuario"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="contrasenaUsuario">Contraseña</label>
+            <input type="password" class="form-control" id="contrasenaUsuario" [(ngModel)]="contrasenaUsuario"
+              name="contrasenaUsuario" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+          <br><br>
+          <a routerLink="/login">Ya tengo cuenta</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

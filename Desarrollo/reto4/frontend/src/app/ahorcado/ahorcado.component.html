@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahorcado</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body class="container mt-5">
+  <div class="text-center">
+    <h1 class="mb-4">Juego del ahorcado</h1>
+
+    <div class="form-group">
+      <label for="letraIngresada">Introduzca una letra :D</label>
+      <input type="text" id="letraIngresada" class="form-control" maxlength="1" [(ngModel)]="letraIngresada"
+        [disabled]="win || lose">
+      <button class="btn btn-primary mt-2" (click)="adivinarLetra()">Adivinar</button>
+    </div>
+
+    <p class="lead">{{palabraGuiones}}</p>
+
+    <p>Intentos restantes: {{intentosRestantes}}</p>
+
+    <p>Letras ingresadas: {{ letrasIngresadas.join(', ') }}</p>
+
+    <h2 *ngIf="lose" class="text-danger">Perdiste! la palabra era: {{palabraOrigen}}</h2>
+    <h2 *ngIf="win" class="text-success">Felicidades!</h2>
+
+    <div *ngIf="lose || win">
+      <h2>Top jugadores</h2>
+      <ul class="list-group">
+        <li *ngFor="let jugador of players" class="list-group-item">{{ jugador.nombre }} - Puntaje: {{ jugador.puntaje
+          }}
+        </li>
+      </ul>
+      <button class="btn btn-success" (click)="reiniciarJuego()">Reiniciar Juego</button>
+    </div>
+
+  </div>
+
+  <button routerLink="/menu" class="btn btn-info mt-4">Volver al menú</button>
+</body>
+
+</html>

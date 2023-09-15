@@ -1,0 +1,78 @@
+<app-menu>
+  <div class="container">
+    <br>
+    <h2>Editar premio</h2>
+    <br>
+    <div class="container">
+      <form [formGroup]="editForm" (ngSubmit)="postForm(editForm.value)">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex align-items-center">
+              <div class="form-group flex-grow-1">
+                <label for="exampleFormControlInput1">Código</label>
+                <input type="text" class="form-control" formControlName="codigoPremio" [ngClass]="{
+                  'is-invalid': editForm.get('codigoPremio')?.invalid && (editForm.get('codigoPremio')?.touched || editForm.get('codigoPremio')?.dirty),
+                  'is-valid': editForm.get('codigoPremio')?.valid && (editForm.get('codigoPremio')?.touched || editForm.get('codigoPremio')?.dirty)
+                }">
+              </div>
+              <button class="btn btn-circle btn-update btn-margin" type="button" title="Generar nuevo código"
+                (click)="randomCode()">
+                <span class="material-icons">sync</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Nombre <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="nombrePremio" [ngClass]="{
+                'is-invalid': editForm.get('nombrePremio')?.invalid && (editForm.get('nombrePremio')?.touched || editForm.get('nombrePremio')?.dirty),
+                'is-valid': editForm.get('nombrePremio')?.valid && (editForm.get('nombrePremio')?.touched || editForm.get('nombrePremio')?.dirty)
+              }">
+
+              <div *ngIf="editForm.get('nombrePremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Descripción <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="descPremio" [ngClass]="{
+                'is-invalid': editForm.get('descPremio')?.invalid && (editForm.get('descPremio')?.touched || editForm.get('descPremio')?.dirty),
+                'is-valid': editForm.get('descPremio')?.valid && (editForm.get('descPremio')?.touched || editForm.get('descPremio')?.dirty)
+              }">
+
+              <div *ngIf="editForm.get('descPremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Valor <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="valorPremio" [ngClass]="{
+                'is-invalid': editForm.get('valorPremio')?.invalid && (editForm.get('valorPremio')?.touched || editForm.get('valorPremio')?.dirty),
+                'is-valid': editForm.get('valorPremio')?.valid && (editForm.get('valorPremio')?.touched || editForm.get('valorPremio')?.dirty)
+              }">
+              <div *ngIf="editForm.get('valorPremio')?.errors?.['pattern']" class="invalid-feedback">
+                Solo se permiten números.
+              </div>
+              <div *ngIf="editForm.get('valorPremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <button type="button" mat-raised-button color="accent" (click)="goBack()">Atrás</button> |
+        <button type="submit" mat-raised-button color="primary" [disabled]="editForm.invalid">Editar</button>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</app-menu>

@@ -1,0 +1,78 @@
+<app-menu>
+  <div class="container">
+    <br>
+    <h2>Crear premio</h2>
+    <br>
+    <div class="container">
+      <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+        <div class="row">
+          <div class="col">
+            <div class="d-flex align-items-center">
+              <div class="form-group flex-grow-1">
+                <label for="exampleFormControlInput1">Código</label>
+                <input type="text" class="form-control" formControlName="codigoPremio" [ngClass]="{
+                  'is-invalid': newForm.get('codigoPremio')?.invalid && (newForm.get('codigoPremio')?.touched || newForm.get('codigoPremio')?.dirty),
+                  'is-valid': newForm.get('codigoPremio')?.valid && (newForm.get('codigoPremio')?.touched || newForm.get('codigoPremio')?.dirty)
+                }">
+              </div>
+              <button class="btn btn-circle btn-update btn-margin" type="button" title="Generar nuevo código"
+                (click)="randomCode()">
+                <span class="material-icons">sync</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Nombre <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="nombrePremio" [ngClass]="{
+                'is-invalid': newForm.get('nombrePremio')?.invalid && (newForm.get('nombrePremio')?.touched || newForm.get('nombrePremio')?.dirty),
+                'is-valid': newForm.get('nombrePremio')?.valid && (newForm.get('nombrePremio')?.touched || newForm.get('nombrePremio')?.dirty)
+              }">
+
+              <div *ngIf="newForm.get('nombrePremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Descripción <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="descPremio" [ngClass]="{
+                'is-invalid': newForm.get('descPremio')?.invalid && (newForm.get('descPremio')?.touched || newForm.get('descPremio')?.dirty),
+                'is-valid': newForm.get('descPremio')?.valid && (newForm.get('descPremio')?.touched || newForm.get('descPremio')?.dirty)
+              }">
+
+              <div *ngIf="newForm.get('descPremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Valor <b style="color: red;">*</b></label>
+              <input type="text" class="form-control" formControlName="valorPremio" [ngClass]="{
+                'is-invalid': newForm.get('valorPremio')?.invalid && (newForm.get('valorPremio')?.touched || newForm.get('valorPremio')?.dirty),
+                'is-valid': newForm.get('valorPremio')?.valid && (newForm.get('valorPremio')?.touched || newForm.get('valorPremio')?.dirty)
+              }">
+              <div *ngIf="newForm.get('valorPremio')?.errors?.['pattern']" class="invalid-feedback">
+                Solo se permiten números.
+              </div>
+              <div *ngIf="newForm.get('valorPremio')?.errors?.['required']" class="invalid-feedback">
+                Este campo es obligatorio.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <button type="button" mat-raised-button color="accent" (click)="goBack()">Atrás</button> |
+        <button type="submit" mat-raised-button color="primary" [disabled]="newForm.invalid">Guardar</button>
+        <br><br>
+      </form>
+    </div>
+  </div>
+</app-menu>
